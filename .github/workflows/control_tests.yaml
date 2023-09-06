@@ -13,14 +13,19 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Install pytest and flake8
+      - name: Install pytest, flake8, and autopep8
         run: |
           pip install pytest
           pip install flake8
+          pip install autopep8
 
       - name: Run tests
         run: |
           pytest
+
+      - name: Autopep8 Format
+        run: |
+          autopep8 --in-place --recursive .
 
       - name: Run flake8
         uses: py-actions/flake8@v2
